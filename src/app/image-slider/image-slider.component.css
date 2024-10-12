@@ -1,6 +1,6 @@
 :host {
   display: block;
-  width: 100%; /* Ensure the app-image-slider takes the full width */
+  width: 100%;
 }
 
 .slider-container {
@@ -37,31 +37,31 @@ button {
   color: black;
 }
 
-.location-slide, .rss-feed-slide {
+.rss-feed-slide {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-color: black; /* Add background color to make it visible */
+  background-color: black;
   color: white;
   font-size: 1.5rem;
 }
 
 .rss-feed-slide {
-  flex-direction: column; /* Arrange items vertically */
-  padding: 20px; /* Add padding for better spacing */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
-}a
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
 
 .rss-feed-slide h3 {
-  margin: 10px 0; /* Add margin for spacing between titles */
-  font-size: 1.2rem; /* Adjust font size for titles */
+  margin: 10px 0;
+  font-size: 1.2rem;
 }
 
 .rss-feed-slide p {
-  margin: 5px 0; /* Add margin for spacing between descriptions */
-  font-size: 1rem; /* Adjust font size for descriptions */
+  margin: 5px 0;
+  font-size: 1rem;
 }
 
 .video-slide {
@@ -78,7 +78,6 @@ button {
   height: 100%;
 }
 
-/* src/app/image-slider/image-slider.component.css */
 @media (max-width: 767px) {
   .rss-feed-slide .rss-items {
     display: none;

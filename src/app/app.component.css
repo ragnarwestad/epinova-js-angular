@@ -10,6 +10,6 @@ body, html {
   max-width: 1180px;
   width: 100%;
   display: flex;
-  justify-content: center; /* Center the content inside .app-style */
-  margin: 0 auto; /* Center the .app-style container itself */
+  justify-content: center;
+  margin: 0 auto;
 }
