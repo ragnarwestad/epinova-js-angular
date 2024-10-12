@@ -52,7 +52,7 @@ button {
   flex-direction: column; /* Arrange items vertically */
   padding: 20px; /* Add padding for better spacing */
   overflow-y: auto; /* Enable vertical scrolling if content overflows */
-}
+}a
 
 .rss-feed-slide h3 {
   margin: 10px 0; /* Add margin for spacing between titles */
@@ -78,3 +78,21 @@ button {
   height: 100%;
 }
 
+/* src/app/image-slider/image-slider.component.css */
+@media (max-width: 767px) {
+  .rss-feed-slide .rss-items {
+    display: none;
+  }
+  .rss-feed-slide .location {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .rss-feed-slide .rss-items {
+    display: block;
+  }
+  .rss-feed-slide .location {
+    display: none;
+  }
+}

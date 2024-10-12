@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { parseString } from 'xml2js';
 import { NgForOf, NgIf, SlicePipe } from '@angular/common';
@@ -46,6 +46,7 @@ export class ImageSliderComponent implements AfterViewInit, OnInit, OnDestroy {
   rssFeedUrl: string = '/api/public/shows/the-report';
   rssFeedData: RssFeedData | null = null;
   videoId = 'M7lc1UVf-VE';
+  isDesktopView: boolean = window.innerWidth >= 768;
 
   @ViewChild('playerContainer', { static: false }) playerContainer!: ElementRef;
   player!: any;
@@ -72,6 +73,11 @@ export class ImageSliderComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     this.waitForYouTubeAPI();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isDesktopView = event.target.innerWidth >= 768;
   }
 
   waitForYouTubeAPI() {

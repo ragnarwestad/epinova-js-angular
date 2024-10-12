@@ -2,18 +2,20 @@
   <button mat-button (click)="prevImage()">&#10094;</button>
   <div class="slider-content">
     <img *ngIf="currentIndex < images.length" [src]="images[currentIndex]" alt="Image Slider">
-    <div *ngIf="currentIndex === images.length" class="location-slide">
-      <p>{{ location }}</p>
-    </div>
-    <div *ngIf="currentIndex === images.length + 1" class="rss-feed-slide">
-      <div *ngIf="rssFeedData && rssFeedData.rss && rssFeedData.rss.channel && rssFeedData.rss.channel[0].item">
-        <div *ngFor="let item of rssFeedData.rss.channel[0].item | slice:-2">
-          <h3 [innerHTML]="item.title ? item.title : [0]"></h3>
-          <p [innerHTML]="item.description ? item.description : [0]"></p>
+    <div *ngIf="currentIndex === images.length" class="rss-feed-slide">
+      <div *ngIf="isDesktopView">
+        <div *ngIf="rssFeedData && rssFeedData.rss && rssFeedData.rss.channel && rssFeedData.rss.channel[0].item">
+          <div *ngFor="let item of rssFeedData.rss.channel[0].item | slice:-2">
+            <h3 [innerHTML]="item.title ? item.title : [0]"></h3>
+            <p [innerHTML]="item.description ? item.description : [0]"></p>
+          </div>
         </div>
       </div>
+      <div *ngIf="!isDesktopView">
+        <p>{{ location }}</p>
+      </div>
     </div>
-    <div *ngIf="currentIndex === images.length + 2" class="video-slide">
+    <div *ngIf="currentIndex === images.length + 1" class="video-slide">
       <div #playerContainer></div>
     </div>
   </div>
