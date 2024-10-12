@@ -1,0 +1,11 @@
+<div class="slider-container">
+  <button mat-button (click)="prevImage()">&#10094;</button>
+  <img *ngIf="currentIndex < images.length" [src]="images[currentIndex]" alt="Image Slider">
+  <div *ngIf="currentIndex === images.length" class="location-slide">
+    <p>{{ location }}</p>
+  </div>
+  <div *ngIf="currentIndex === images.length + 1" class="podcast-slide">
+    <iframe [src]="podcastUrl" width="100%" height="200" frameborder="0" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <button mat-button (click)="nextImage()">&#10095;</button>
+</div>

@@ -1,0 +1,56 @@
+.slider-container {
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  height: 500px; /* Set a fixed height for the container */
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain; /* Ensure the image fits within the container */
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black; /* Change button color to black */
+}
+
+button:first-of-type {
+  left: 0;
+}
+
+button:last-of-type {
+  right: 0;
+}
+
+.location-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: black; /* Add background color to make it visible */
+  color: white;
+  font-size: 1.5rem;
+}
+
+.podcast-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: black; /* Add background color to make it visible */
+  color: white;
+  font-size: 1.5rem;
+}
