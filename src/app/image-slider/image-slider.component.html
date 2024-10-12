@@ -13,6 +13,9 @@
         </div>
       </div>
     </div>
+    <div *ngIf="currentIndex === images.length + 2" class="video-slide">
+      <div #playerContainer></div>
+    </div>
   </div>
   <button mat-button (click)="nextImage()">&#10095;</button>
 </div>

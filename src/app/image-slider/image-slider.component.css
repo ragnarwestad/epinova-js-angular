@@ -63,3 +63,18 @@ button {
   margin: 5px 0; /* Add margin for spacing between descriptions */
   font-size: 1rem; /* Adjust font size for descriptions */
 }
+
+.video-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.video-slide iframe {
+  width: 100%;
+  height: 100%;
+}
+
