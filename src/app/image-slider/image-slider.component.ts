@@ -1,9 +1,11 @@
+// src/app/image-slider/image-slider.component.ts
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgIf } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { YouTubePlayerComponent } from '../youtube-player/youtube-player.component';
 import { RssFeedReaderComponent } from '../rss-feed-reader/rss-feed-reader.component';
+import { LocationDisplayComponent } from '../location-display/location-display.component';
 
 @Component({
   selector: 'app-image-slider',
@@ -14,20 +16,18 @@ import { RssFeedReaderComponent } from '../rss-feed-reader/rss-feed-reader.compo
     HttpClientModule,
     MatButton,
     YouTubePlayerComponent,
-    RssFeedReaderComponent
+    RssFeedReaderComponent,
+    LocationDisplayComponent
   ],
   standalone: true
 })
 export class ImageSliderComponent implements OnInit {
   currentIndex: number = 0;
-  location: string = '';
   rssFeedUrl: string = '/api/public/shows/the-report';
   videoId = 'M7lc1UVf-VE';
   isDesktopView: boolean = window.innerWidth >= 768;
 
-  ngOnInit() {
-    this.getLocation();
-  }
+  ngOnInit() {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -40,15 +40,5 @@ export class ImageSliderComponent implements OnInit {
 
   nextImage() {
     this.currentIndex = (this.currentIndex < 2) ? this.currentIndex + 1 : 0;
-  }
-
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.location = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
-      });
-    } else {
-      this.location = 'Geolocation is not supported by this browser.';
-    }
   }
 }

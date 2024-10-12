@@ -1,3 +1,4 @@
+
 <div class="slider-container">
   <button mat-button (click)="prevImage()">&#10094;</button>
   <div class="slider-content">
@@ -7,7 +8,7 @@
         <app-rss-feed-reader [rssFeedUrl]="rssFeedUrl"></app-rss-feed-reader>
       </div>
       <div *ngIf="!isDesktopView">
-        <p>{{ location }}</p>
+        <app-location-display></app-location-display>
       </div>
     </div>
     <div *ngIf="currentIndex === 2" class="video-slide">
