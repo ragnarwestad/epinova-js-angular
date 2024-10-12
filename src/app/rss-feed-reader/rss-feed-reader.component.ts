@@ -1,4 +1,3 @@
-// src/app/rss-feed-reader/rss-feed-reader.component.ts
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { parseString } from 'xml2js';

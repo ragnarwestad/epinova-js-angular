@@ -1,5 +1,4 @@
-// src/app/youtube-player/youtube-player.component.ts
-import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 declare global {
@@ -11,7 +10,7 @@ declare global {
 
 @Component({
   selector: 'app-youtube-player',
-  template: `<div #playerContainer></div>`,
+  template: `<div #playerContainer class="player-container"></div>`,
   styleUrls: ['./youtube-player.component.css'],
   standalone: true,
   imports: [CommonModule]
@@ -55,17 +54,13 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
         rel: 0,
       },
       events: {
-        onReady: this.onPlayerReady.bind(this),
-        onError: this.onPlayerError.bind(this),
+        onReady: (function (event: any) {
+          console.log('YouTube Player is ready:', event);
+        }).bind(this),
+        onError: (function (event: any) {
+          console.error('YouTube Player error:', event);
+        }).bind(this),
       },
     });
-  }
-
-  onPlayerReady(event: any) {
-    // Custom logic when player is ready
-  }
-
-  onPlayerError(event: any) {
-    console.error('YouTube Player error:', event);
   }
 }
