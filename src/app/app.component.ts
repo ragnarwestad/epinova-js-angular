@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { SliderComponent } from './slider/slider.component';
 
 @Component({
   selector: 'app-root',
-  template: '<div class="app-style"><app-image-slider></app-image-slider></div>',
+  template: '<div class="app-style"><app-slider></app-slider></div>',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [RouterOutlet, ImageSliderComponent] // Import ImageSliderComponent here
+  imports: [RouterOutlet, SliderComponent] // Import ImageSliderComponent here
 })
 export class AppComponent {}

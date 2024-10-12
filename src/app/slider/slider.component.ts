@@ -1,4 +1,3 @@
-// src/app/image-slider/image-slider.component.ts
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgIf } from '@angular/common';
@@ -8,9 +7,9 @@ import { RssFeedReaderComponent } from '../rss-feed-reader/rss-feed-reader.compo
 import { LocationDisplayComponent } from '../location-display/location-display.component';
 
 @Component({
-  selector: 'app-image-slider',
-  templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.css'],
+  selector: 'app-slider',
+  templateUrl: './slider.component.html',
+  styleUrls: ['./slider.component.css'],
   imports: [
     NgIf,
     HttpClientModule,
@@ -21,7 +20,7 @@ import { LocationDisplayComponent } from '../location-display/location-display.c
   ],
   standalone: true
 })
-export class ImageSliderComponent implements OnInit {
+export class SliderComponent implements OnInit {
   currentIndex: number = 0;
   rssFeedUrl: string = '/api/public/shows/the-report';
   videoId = 'M7lc1UVf-VE';
