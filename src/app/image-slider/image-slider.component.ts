@@ -1,8 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatButton } from '@angular/material/button';
-import { NgForOf, NgIf } from '@angular/common';
+import { NgForOf, NgIf, SlicePipe } from '@angular/common';
 import { parseString } from 'xml2js';
+
+interface RssFeedItem {
+  title?: string[];
+  description?: string[];
+}
+
+interface RssFeedChannel {
+  item: RssFeedItem[];
+}
+
+interface RssFeedData {
+  rss: {
+    channel: RssFeedChannel[];
+  };
+}
 
 @Component({
   selector: 'app-image-slider',
@@ -12,7 +27,9 @@ import { parseString } from 'xml2js';
     MatButton,
     NgIf,
     NgForOf,
-    HttpClientModule // Add HttpClientModule here if it's a standalone component
+    HttpClientModule,
+    SlicePipe,
+    // Add HttpClientModule here if it's a standalone component
   ],
   standalone: true
 })
@@ -24,7 +41,7 @@ export class ImageSliderComponent implements OnInit {
   currentIndex: number = 0;
   location: string = '';
   rssFeedUrl: string = '/api/public/shows/the-report';
-  rssFeedData: any;
+  rssFeedData: RssFeedData | null = null;
 
   constructor(private http: HttpClient) {}
 

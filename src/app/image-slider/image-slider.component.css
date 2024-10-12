@@ -1,11 +1,24 @@
+:host {
+  display: block;
+  width: 100%; /* Ensure the app-image-slider takes the full width */
+}
+
 .slider-container {
-  max-width: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  height: 500px;
+}
+
+.slider-content {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  position: relative;
-  height: 500px; /* Set a fixed height for the container */
+  height: 100%;
 }
 
 img {
@@ -13,7 +26,7 @@ img {
   max-height: 100%;
   height: auto;
   width: auto;
-  object-fit: contain; /* Ensure the image fits within the container */
+  object-fit: contain;
 }
 
 button {
@@ -21,36 +34,32 @@ button {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: black; /* Change button color to black */
+  color: black;
 }
 
-button:first-of-type {
-  left: 0;
-}
-
-button:last-of-type {
-  right: 0;
-}
-
-.location-slide {
+.location-slide, .rss-feed-slide {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
   background-color: black; /* Add background color to make it visible */
   color: white;
   font-size: 1.5rem;
 }
 
-.podcast-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background-color: black; /* Add background color to make it visible */
-  color: white;
-  font-size: 1.5rem;
+.rss-feed-slide {
+  flex-direction: column; /* Arrange items vertically */
+  padding: 20px; /* Add padding for better spacing */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.rss-feed-slide h3 {
+  margin: 10px 0; /* Add margin for spacing between titles */
+  font-size: 1.2rem; /* Adjust font size for titles */
+}
+
+.rss-feed-slide p {
+  margin: 5px 0; /* Add margin for spacing between descriptions */
+  font-size: 1rem; /* Adjust font size for descriptions */
 }
