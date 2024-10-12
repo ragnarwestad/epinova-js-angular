@@ -4,10 +4,10 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, ImageSliderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [RouterOutlet, ImageSliderComponent] // Import ImageSliderComponent here
 })
 export class AppComponent {
   title = 'epinova-js-angular';

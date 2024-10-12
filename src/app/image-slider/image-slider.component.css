@@ -2,7 +2,7 @@
   max-width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   overflow: hidden;
   position: relative;
   height: 500px; /* Set a fixed height for the container */

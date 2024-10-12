@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
+import { parseString } from 'xml2js';
 
 @Component({
   selector: 'app-image-slider',
@@ -8,20 +10,27 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./image-slider.component.css'],
   imports: [
     MatButton,
-    NgIf
+    NgIf,
+    NgForOf,
+    HttpClientModule // Add HttpClientModule here if it's a standalone component
   ],
   standalone: true
 })
 export class ImageSliderComponent implements OnInit {
+
   images: string[] = [
     'assets/en-gruppe-i-et-mote.jpg',
   ];
-  podcastUrl: string = 'https://embed.acast.com/your-podcast-id';
   currentIndex: number = 0;
   location: string = '';
+  rssFeedUrl: string = '/api/public/shows/the-report';
+  rssFeedData: any;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.getLocation();
+    this.fetchRssFeed();
   }
 
   prevImage() {
@@ -41,5 +50,18 @@ export class ImageSliderComponent implements OnInit {
     } else {
       this.location = 'Geolocation is not supported by this browser.';
     }
+  }
+
+  fetchRssFeed() {
+    this.http.get(this.rssFeedUrl, { responseType: 'text' }).subscribe(data => {
+      parseString(data, (err, result) => {
+        if (err) {
+          console.error('Error parsing RSS feed:', err);
+        } else {
+          this.rssFeedData = result;
+          console.log(this.rssFeedData); // Log the RSS feed data to verify
+        }
+      });
+    });
   }
 }
