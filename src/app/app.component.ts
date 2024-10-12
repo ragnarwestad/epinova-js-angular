@@ -4,9 +4,16 @@ import { SliderComponent } from './slider/slider.component';
 
 @Component({
   selector: 'app-root',
-  template: '<div class="app-style"><app-slider></app-slider></div>',
+  template: `
+    <div class="app-title">{{ title }}</div>
+    <div class="app-style">
+      <app-slider></app-slider>
+    </div>
+  `,
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [RouterOutlet, SliderComponent] // Import ImageSliderComponent here
+  imports: [RouterOutlet, SliderComponent]
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'Epinova JS Angular';
+}

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RssFeedReaderComponent } from './rss-feed-reader.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('RssFeedReaderComponent', () => {
   let component: RssFeedReaderComponent;
@@ -8,9 +8,8 @@ describe('RssFeedReaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RssFeedReaderComponent]
-    })
-    .compileComponents();
+      imports: [HttpClientModule, RssFeedReaderComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RssFeedReaderComponent);
     component = fixture.componentInstance;
