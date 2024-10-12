@@ -5,12 +5,7 @@
     <img *ngIf="currentIndex === 0" src="assets/en-gruppe-i-et-mote.jpg" alt="Image Slider">
     <div *ngIf="currentIndex === 1" class="rss-feed-slide">
       <div *ngIf="isDesktopView">
-        <div *ngIf="rssFeedData && rssFeedData.rss && rssFeedData.rss.channel && rssFeedData.rss.channel[0].item">
-          <div *ngFor="let item of rssFeedData.rss.channel[0].item | slice:-2">
-            <h3 [innerHTML]="item.title ? item.title : [0]"></h3>
-            <p [innerHTML]="item.description ? item.description : [0]"></p>
-          </div>
-        </div>
+        <app-rss-feed-reader [rssFeedUrl]="rssFeedUrl"></app-rss-feed-reader>
       </div>
       <div *ngIf="!isDesktopView">
         <p>{{ location }}</p>

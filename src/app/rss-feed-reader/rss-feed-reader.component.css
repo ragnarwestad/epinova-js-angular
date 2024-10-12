@@ -1,0 +1,42 @@
+/* src/app/rss-feed-reader/rss-feed-reader.component.css */
+.rss-feed-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.rss-feed-slide h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.rss-feed-slide p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .rss-feed-slide .rss-items {
+    display: none;
+  }
+  .rss-feed-slide .location {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .rss-feed-slide .rss-items {
+    display: block;
+  }
+  .rss-feed-slide .location {
+    display: none;
+  }
+}
