@@ -1,8 +1,8 @@
 <div class="slider-container">
   <button mat-button (click)="prevImage()">&#10094;</button>
   <div class="slider-content">
-    <img *ngIf="currentIndex < images.length" [src]="images[currentIndex]" alt="Image Slider">
-    <div *ngIf="currentIndex === images.length" class="rss-feed-slide">
+    <img *ngIf="currentIndex === 0" src="assets/en-gruppe-i-et-mote.jpg" alt="Image Slider">
+    <div *ngIf="currentIndex === 1" class="rss-feed-slide">
       <div *ngIf="isDesktopView">
         <div *ngIf="rssFeedData && rssFeedData.rss && rssFeedData.rss.channel && rssFeedData.rss.channel[0].item">
           <div *ngFor="let item of rssFeedData.rss.channel[0].item | slice:-2">
@@ -15,7 +15,7 @@
         <p>{{ location }}</p>
       </div>
     </div>
-    <div *ngIf="currentIndex === images.length + 1" class="video-slide">
+    <div *ngIf="currentIndex === 2" class="video-slide">
       <div #playerContainer></div>
     </div>
   </div>

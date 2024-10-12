@@ -40,7 +40,6 @@ interface RssFeedData {
   standalone: true
 })
 export class ImageSliderComponent implements AfterViewInit, OnInit, OnDestroy {
-  images: string[] = ['assets/en-gruppe-i-et-mote.jpg'];
   currentIndex: number = 0;
   location: string = '';
   rssFeedUrl: string = '/api/public/shows/the-report';
@@ -110,23 +109,23 @@ export class ImageSliderComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   onPlayerReady(event: any) {
-    if (this.currentIndex === this.images.length + 2) {
+    if (this.currentIndex === 2) {
       event.target.playVideo();
     }
   }
 
   prevImage() {
-    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.images.length + 2;
+    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : 2;
     this.handleSlideChange();
   }
 
   nextImage() {
-    this.currentIndex = (this.currentIndex < this.images.length + 2) ? this.currentIndex + 1 : 0;
+    this.currentIndex = (this.currentIndex < 2) ? this.currentIndex + 1 : 0;
     this.handleSlideChange();
   }
 
   handleSlideChange() {
-    if (this.currentIndex === this.images.length + 2 && this.player) {
+    if (this.currentIndex === 2 && this.player) {
       this.player.playVideo();
     } else if (this.player) {
       this.player.pauseVideo();
