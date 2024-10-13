@@ -48,7 +48,7 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
     this.player = new window.YT.Player(this.playerContainer.nativeElement, {
       videoId: this.videoId,
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
         controls: 1,
         modestbranding: 1,
         rel: 0,
