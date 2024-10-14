@@ -1,0 +1,7 @@
+<div *ngIf="isLoading" class="location-container">
+  <mat-spinner diameter="40"></mat-spinner>
+  <div>Henter lokasjon ...</div>
+</div>
+<div *ngIf="!isLoading">
+  <p>{{ location }}</p>
+</div>

@@ -1,0 +1,9 @@
+<div class="player-wrapper">
+  <div #playerContainer class="player-container"></div>
+  <div class="video-metadata" *ngIf="videoTitle">
+    <h3>{{ videoTitle }}</h3>
+    <p>Views: {{ viewCount }}</p>
+    <p>Likes: {{ likeCount }}</p>
+    <p>Comments: {{ commentCount }}</p>
+  </div>
+</div>
