@@ -1,5 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+
 
 declare global {
   interface Window {
@@ -10,15 +13,21 @@ declare global {
 
 @Component({
   selector: 'app-youtube-player',
-  template: `<div #playerContainer class="player-container"></div>`,
+  templateUrl: './youtube-player.component.html',
   styleUrls: ['./youtube-player.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [HttpClientModule, NgIf]
 })
 export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
   @Input() videoId!: string;
   @ViewChild('playerContainer', { static: false }) playerContainer!: ElementRef;
   player!: any;
+  videoTitle: string | undefined;
+  viewCount: string | undefined;
+  likeCount: string | undefined;
+  commentCount: string | undefined;
+
+  constructor(private http: HttpClient) {}
 
   ngAfterViewInit() {
     if (!window.YT) {
@@ -28,6 +37,7 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
     }
 
     this.waitForYouTubeAPI();
+    this.fetchVideoMetadata();
   }
 
   ngOnDestroy() {
@@ -54,13 +64,34 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
         rel: 0,
       },
       events: {
-        onReady: (function (event: any) {
+        onReady: (event: any) => {
           console.log('YouTube Player is ready:', event);
-        }).bind(this),
-        onError: (function (event: any) {
+        },
+        onError: (event: any) => {
           console.error('YouTube Player error:', event);
-        }).bind(this),
+        },
       },
     });
   }
+
+  fetchVideoMetadata() {
+    const apiKey = 'AIzaSyDIrUoOcqJ7D4SUDmm5N5PFRqKDdWY3eSU';
+    const url = `https://www.googleapis.com/youtube/v3/videos?id=${this.videoId}&part=snippet,statistics&key=${apiKey}`;
+
+    this.http.get(url).subscribe(
+      (response: any) => {
+        if (response.items && response.items.length > 0) {
+          const videoData = response.items[0];
+          this.videoTitle = videoData.snippet.title;
+          this.viewCount = videoData.statistics.viewCount;
+          this.likeCount = videoData.statistics.likeCount;
+          this.commentCount = videoData.statistics.commentCount;
+        }
+      },
+      (error: any) => {
+        console.error('YouTube API error:', error);
+      }
+    );
+  }
+
 }

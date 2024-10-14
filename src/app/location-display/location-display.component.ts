@@ -4,16 +4,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-location-display',
-  template: `
-    <div *ngIf="isLoading" class="location-container">
-      <mat-spinner diameter="40"></mat-spinner>
-      <div>Henter lokasjon ...</div>
-    </div>
-    <div *ngIf="!isLoading">
-      <p>{{ location }}</p>
-    </div>
-  `,
-  styles: ['.location-container { display: flex; flex-direction: column; align-items: center}'],
+  templateUrl: './location-display.component.html',
+  styleUrls: ['./location-display.component.scss'],
   standalone: true,
   imports: [NgIf, MatProgressSpinnerModule]
 })
