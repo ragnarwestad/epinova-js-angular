@@ -1,9 +1,12 @@
 <div class="player-wrapper">
   <div #playerContainer class="player-container"></div>
-  <div class="video-metadata" *ngIf="videoTitle">
+  <div class="video-metadata" *ngIf="videoTitle && !youTubeError">
     <h3>{{ videoTitle }}</h3>
     <p>Views: {{ viewCount }}</p>
     <p>Likes: {{ likeCount }}</p>
     <p>Comments: {{ commentCount }}</p>
+  </div>
+  <div class="video-metadata" *ngIf="youTubeError">
+    <p>Error reading YouTube metadata, check your API key!
   </div>
 </div>

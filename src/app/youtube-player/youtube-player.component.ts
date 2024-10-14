@@ -26,6 +26,7 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
   viewCount: string | undefined;
   likeCount: string | undefined;
   commentCount: string | undefined;
+  youTubeError: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -75,7 +76,7 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
   }
 
   fetchVideoMetadata() {
-    const apiKey = 'AIzaSyDIrUoOcqJ7D4SUDmm5N5PFRqKDdWY3eSU';
+    const apiKey = 'YOUR_API_KEY';
     const url = `https://www.googleapis.com/youtube/v3/videos?id=${this.videoId}&part=snippet,statistics&key=${apiKey}`;
 
     this.http.get(url).subscribe(
@@ -90,6 +91,7 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
       },
       (error: any) => {
         console.error('YouTube API error:', error);
+        this.youTubeError = true;
       }
     );
   }
