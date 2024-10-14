@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgIf } from '@angular/common';
+import { NgIf, NgOptimizedImage } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { YouTubePlayerComponent } from '../youtube-player/youtube-player.component';
 import { RssFeedReaderComponent } from '../rss-feed-reader/rss-feed-reader.component';
@@ -16,7 +16,8 @@ import { LocationDisplayComponent } from '../location-display/location-display.c
     MatButton,
     YouTubePlayerComponent,
     RssFeedReaderComponent,
-    LocationDisplayComponent
+    LocationDisplayComponent,
+    NgOptimizedImage
   ],
   standalone: true
 })
@@ -33,11 +34,11 @@ export class SliderComponent implements OnInit {
     this.isDesktopView = event.target.innerWidth >= 768;
   }
 
-  prevImage() {
+  prevSlide() {
     this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : 2;
   }
 
-  nextImage() {
+  nextSlide() {
     this.currentIndex = (this.currentIndex < 2) ? this.currentIndex + 1 : 0;
   }
 }

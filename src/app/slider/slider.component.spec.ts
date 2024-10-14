@@ -37,25 +37,25 @@ describe('SliderComponent', () => {
 
   it('should navigate to the next image', () => {
     component.currentIndex = 0;
-    component.nextImage();
+    component.nextSlide();
     expect(component.currentIndex).toBe(1);
   });
 
   it('should navigate to the previous image', () => {
     component.currentIndex = 1;
-    component.prevImage();
+    component.prevSlide();
     expect(component.currentIndex).toBe(0);
   });
 
   it('should loop to the first image when navigating next from the last image', () => {
     component.currentIndex = 2;
-    component.nextImage();
+    component.nextSlide();
     expect(component.currentIndex).toBe(0);
   });
 
   it('should loop to the last image when navigating previous from the first image', () => {
     component.currentIndex = 0;
-    component.prevImage();
+    component.prevSlide();
     expect(component.currentIndex).toBe(2);
   });
 });
