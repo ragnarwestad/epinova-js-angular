@@ -28,11 +28,11 @@ describe('AppComponent', () => {
   });
 
   it(`should have as title 'app'`, () => {
-    expect(component.title).toEqual('Epinova JS Angular');
+    expect(component.title).toEqual('Epinova JS');
   });
 
   it('should render title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.app-title')?.textContent).toContain('Epinova JS Angular');
+    expect(compiled.querySelector('.app-title')?.textContent).toContain('Epinova JS');
   });
 });

@@ -15,5 +15,5 @@ import { SliderComponent } from './slider/slider.component';
   imports: [RouterOutlet, SliderComponent]
 })
 export class AppComponent {
-  title = 'Epinova JS Angular';
+  title = 'Epinova JS';
 }
