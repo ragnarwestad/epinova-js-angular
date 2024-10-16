@@ -1,5 +1,7 @@
 # EpinovaJsAngular
 
+Dette er besvarelsen til oppgaven gitt i "Epinova - frontend JavaScript kodeoppgave.pdf"
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
 ## Development server
