@@ -1,7 +1,7 @@
 <div class="slider-container">
   <button mat-button (click)="prevSlide()">&#10094;</button>
   <div class="slider-content">
-    <img *ngIf="currentIndex === 0" ngSrc="assets/en-gruppe-i-et-mote.jpg" width="1600" height="750" alt="Image Slider" priority>
+    <img *ngIf="currentIndex === 0" ngSrc="assets/en-gruppe-i-et-mote.jpg" width="1000" height="469" alt="Image Slider" priority>
     <div *ngIf="currentIndex === 1" class="rss-feed-slide">
       <div *ngIf="isDesktopView">
         <app-rss-feed-reader [rssFeedUrl]="rssFeedUrl"></app-rss-feed-reader>
