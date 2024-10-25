@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgIf } from '@angular/common';
-
 
 declare global {
   interface Window {
@@ -39,12 +37,14 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
 
     this.waitForYouTubeAPI();
     this.fetchVideoMetadata();
+    this.updatePlayerSize();
   }
 
   ngOnDestroy() {
     if (this.player) {
       this.player.destroy();
     }
+    window.removeEventListener('resize', this.updatePlayerSize);
   }
 
   waitForYouTubeAPI() {
@@ -58,6 +58,8 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
   initPlayer() {
     this.player = new window.YT.Player(this.playerContainer.nativeElement, {
       videoId: this.videoId,
+      height: this.calculatePlayerHeight(),
+      width: this.calculatePlayerWidth(),
       playerVars: {
         autoplay: 1,
         controls: 1,
@@ -73,6 +75,7 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
         },
       },
     });
+    window.addEventListener('resize', this.updatePlayerSize.bind(this));
   }
 
   fetchVideoMetadata() {
@@ -96,4 +99,19 @@ export class YouTubePlayerComponent implements AfterViewInit, OnDestroy {
     );
   }
 
+  calculatePlayerWidth() {
+    return window.innerWidth * 0.65;
+  }
+
+  calculatePlayerHeight() {
+    return window.innerHeight * 0.65;
+  }
+
+  updatePlayerSize() {
+    if (this.player) {
+      const width = this.calculatePlayerWidth();
+      const height = this.calculatePlayerHeight();
+      this.player.setSize(width, height);
+    }
+  }
 }
